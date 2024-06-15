@@ -1,0 +1,18 @@
+[
+  {
+    "id": "T01",
+    "stress_level": "Stress Ringan"
+  },
+  {
+    "id": "T02",
+    "stress_level": "Stress Sedang"
+  },
+  {
+    "id": "T03",
+    "stress_level": "Stress Berat"
+  },
+  {
+    "id": "T04",
+    "stress_level": "Stress Sangat Berat"
+  }
+]

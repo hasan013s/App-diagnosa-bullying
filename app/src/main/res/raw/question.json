@@ -1,0 +1,162 @@
+[
+  {
+    "id": "G01",
+    "question": "Menjadi marah karena hal kecil/sepele"
+  },
+  {
+    "id": "G02",
+    "question": "Kesulitan untuk relaksasi/bersantai"
+  },
+  {
+    "id": "G03",
+    "question": "Kelelahan"
+  },
+  {
+    "id": "G04",
+    "question": "Kehilangan minat pada banyak hal (misalnya makan, ambulasi, sosialisasi)"
+  },
+  {
+    "id": "G05",
+    "question": "Mudah tersinggung"
+  },
+  {
+    "id": "G06",
+    "question": "Kemampuan menyelesaikan masalah lebih dari biasanya"
+  },
+  {
+    "id": "G07",
+    "question": "Gangguan dalam sistem pencernaan"
+  },
+  {
+    "id": "G08",
+    "question": "Tidak bisa menikmati hal-hal yang dilakukan"
+  },
+  {
+    "id": "G09",
+    "question": "Kesulitan menenangkan diri setelah sesuatu yang menjengkelkan"
+  },
+  {
+    "id": "G10",
+    "question": "Sulit untuk antusias pada banyak hal"
+  },
+  {
+    "id": "G11",
+    "question": "Berada pada keadaan tegang"
+  },
+  {
+    "id": "G12",
+    "question": "Gemetar"
+  },
+  {
+    "id": "G13",
+    "question": "Sulit untuk meningkatkan inisiatif untuk melakukan sesuatu"
+  },
+  {
+    "id": "G14",
+    "question": "Perasaan takut yang tidak bisa dijelaskan"
+  },
+  {
+    "id": "G15",
+    "question": "Perubahan mood secara tiba-tiba"
+  },
+  {
+    "id": "G16",
+    "question": "Gagal memahami sesuatu"
+  },
+  {
+    "id": "G17",
+    "question": "Merasa harga diri rendah"
+  },
+  {
+    "id": "G18",
+    "question": "Percaya diri menurun"
+  },
+  {
+    "id": "G19",
+    "question": "Perasaan Sensitif"
+  },
+  {
+    "id": "G20",
+    "question": "Khawatir berlebih"
+  },
+  {
+    "id": "G21",
+    "question": "Insomnia"
+  },
+  {
+    "id": "G22",
+    "question": "Tidak peduli keadaan sekitar"
+  },
+  {
+    "id": "G23",
+    "question": "Pusing"
+  },
+  {
+    "id": "G24",
+    "question": "Hilang kepercayaan kepada orang lain"
+  },
+  {
+    "id": "G25",
+    "question": "Tekanan Darah Tinggi"
+  },
+  {
+    "id": "G26",
+    "question": "Jantung berdebar-debar"
+  },
+  {
+    "id": "G27",
+    "question": "Nyeri leher dan bahu"
+  },
+  {
+    "id": "G28",
+    "question": "Merasa tidak aman"
+  },
+  {
+    "id": "G29",
+    "question": "Mudah menyerang orang"
+  },
+  {
+    "id": "G30",
+    "question": "Pikiran kacau"
+  },
+  {
+    "id": "G31",
+    "question": "Melamun secara berlebihan"
+  },
+  {
+    "id": "G32",
+    "question": "Hilang rasa humor"
+  },
+  {
+    "id": "G33",
+    "question": "Pramenstruasi memburuk"
+  },
+  {
+    "id": "G34",
+    "question": "Mengalami kerontokan rambut yang parah"
+  },
+  {
+    "id": "G35",
+    "question": "Derealisasi (lingkungan disekitarnya berubah atau tidak nyata)"
+  },
+  {
+    "id": "G36",
+    "question": "Merasa seolah-olah tidak dapat mengendalikan apa yang sedang dilakukan atau katakan"
+  },
+  {
+    "id": "G37",
+    "question": "Kesulitan melampirkan emosi keingatan"
+  },
+  {
+    "id": "G38",
+    "question": "Mengalami kesulitan mengenali lingkungan"
+  },
+  {
+    "id": "G39",
+    "question": "Mati rasa di pikiran atau tubuh"
+  },
+  {
+    "id": "G40",
+    "question": "Amnesia disosiatif (ketidakmampuan untuk mengingat kembali aspek penting dari trauma)"
+  }
+]
