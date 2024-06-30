@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.haa.diagnosabullying.data.repository.QuestionRepository
+import com.haa.diagnosabullying.data.resource.local.room.entity.DiagnosisEntity
 import com.haa.diagnosabullying.data.resource.local.room.entity.QuestionEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -38,12 +39,24 @@ class QuestionViewModel @Inject constructor(
         _questionSelectedState.tryEmit(currentQuestionSelectedState)
     }
 
-    fun getAllQuestion() = viewModelScope.launch {
+    private fun getAllQuestion() = viewModelScope.launch {
         try {
             val question = questionRepository.getAllQuestion()
             _questionState.tryEmit(question)
         } catch (e: Exception) {
             Log.e("error", e.message.toString())
         }
+    }
+
+    fun calculateDiagnosis(
+        diagnosisIdList: List<String>
+    ) = questionRepository.calculateDiagnosis(diagnosisIdList)
+
+    fun saveDiagnosis(
+        diagnosisEntity: DiagnosisEntity,
+        callback: (id: Long) -> Unit
+    ) = viewModelScope.launch {
+        val savedId = questionRepository.saveDiagnosis(diagnosisEntity)
+        callback(savedId)
     }
 }

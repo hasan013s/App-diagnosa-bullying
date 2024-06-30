@@ -1,18 +1,52 @@
 [
   {
     "id": "T01",
-    "stress_level": "Stress Ringan"
+    "stress_level": "Stress Ringan",
+    "impacts": [
+      "Kecemasan ringan",
+      "mudah tersinggung"
+    ],
+    "solutions": [
+      "Istirahat yang cukup",
+      "melakukan hobi",
+      "teknik relaksasi seperti meditasi atau yoga"
+    ]
   },
   {
     "id": "T02",
-    "stress_level": "Stress Sedang"
+    "stress_level": "Stress Sedang",
+    "impacts": [
+      "Gangguan tidur",
+      "penurunan konsentrasi"
+    ],
+    "solutions": [
+      "Istirahat yang cukup",
+      "meluangkan waktu untuk kegiatan yang disukai"
+    ]
   },
   {
     "id": "T03",
-    "stress_level": "Stress Berat"
+    "stress_level": "Stress Berat",
+    "impacts": [
+      "Masalah fisik dan emosional serius, seperti sakit kepala atau masalah pencernaan.",
+      "penurunan konsentrasi"
+    ],
+    "solutions": [
+      "Mengenali penyebab stres",
+      "berolahraga rutin",
+      "konsultasi dengan profesional"
+    ]
   },
   {
     "id": "T04",
-    "stress_level": "Stress Sangat Berat"
+    "stress_level": "Stress Sangat Berat",
+    "impacts": [
+      "Menghambat kehidupan sehari-hari secara signifikan"
+    ],
+    "solutions": [
+      "Bantuan profesional",
+      "terapi",
+      "pengobatan sesuai anjuran dokter"
+    ]
   }
 ]

@@ -15,22 +15,25 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.haa.diagnosabullying.ui.theme.Poppins
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DashboardScreen(
+fun LoginScreen(
     navHostController: NavHostController,
 ) {
     val contex = LocalContext.current
@@ -59,7 +62,7 @@ fun DashboardScreen(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "Dashboard",
+                text = "LOGIN",
                 fontFamily = Poppins,
                 fontWeight = FontWeight.Normal,
                 fontSize = 20.sp,
@@ -70,13 +73,13 @@ fun DashboardScreen(
         }
         // Text
         Text(
-            text = "Diagnosa Anak yang Terindikasi Korban Bullying",
+            text = "Selamat Datang Di Aplikasi Sistem Pakar Diagnosa Bullying. Silahkan Isi Data Terlebih Dahulu",
             fontFamily = Poppins,
             fontWeight = FontWeight.Normal,
             fontSize = 20.sp,
             color = Color.Black,
             modifier = Modifier
-                .height(59.dp)
+                .height(70.dp)
                 .padding(start = 12.dp)
                 .clickable {
                     Toast
@@ -84,59 +87,72 @@ fun DashboardScreen(
                         .show()
                 }
         )
+        Spacer(
+            modifier = Modifier.height(5.dp)
+        )
+
+        // TextField untuk nama
+        val nameState1 = remember { mutableStateOf("") }
+        val nameState2 = remember { mutableStateOf("") }
+
+        TextField(
+            value = nameState1.value,
+            onValueChange = { newName ->
+                nameState1.value = newName
+            },
+            label = { Text("Nama") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        TextField(
+            value = nameState2.value,
+            onValueChange = { newName ->
+                nameState2.value = newName
+            },
+            label = { Text("Umur") },
+            modifier = Modifier.fillMaxWidth()
+        )
+        // Button Submit
         Button(
             onClick = {
-                navHostController.navigate("QUESTION_SCREEN") {
-                    //supaya tidak dobel clik
-                    launchSingleTop = true
+                when {
+                    nameState1.value.isBlank() -> {
+                        Toast
+                            .makeText(
+                                contex,
+                                "Silahkan Isi Nama Terlebih Dahulu",
+                                Toast.LENGTH_LONG
+                            )
+                            .show()
+                    }
+
+                    nameState2.value.isBlank() -> {
+                        Toast
+                            .makeText(contex, "Silahkan Isi Umur Anda", Toast.LENGTH_LONG)
+                            .show()
+                    }
+
+                    else -> {
+                        // Navigate to Dashboard screen
+                        navHostController.navigate("DASHBOARD_SCREEN")
+                    }
                 }
             },
             modifier = Modifier
-                .padding(horizontal = 12.dp)
                 .fillMaxWidth()
-                .height(44.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0XFF46C77A),
-                contentColor = Color.White
-            ),
-            shape = RoundedCornerShape(size = 9.dp),
+                .height(50.dp)
         ) {
             Text(
-                text = "Mulai",
-                fontFamily = Poppins,
-                fontWeight = FontWeight.Normal,
-                fontSize = 20.sp,
-                textAlign = TextAlign.Center,
+                "Submit",
+                fontSize = 18.sp
 
-                )
-
+            )
         }
-        Button(
-            onClick = {
-                navHostController.navigate("HISTORY_DIAGNOSIS_SCREEN") {
-                    launchSingleTop = true
-                }
-            },
+        //footer
+        Spacer(
             modifier = Modifier
-                .padding(horizontal = 12.dp)
-                .fillMaxWidth()
-                .height(44.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0XFF46C77A),
-                contentColor = Color.White
-            ),
-            shape = RoundedCornerShape(size = 9.dp),
-        ) {
-            Text(
-                text = "Lihat Hasil",
-                fontFamily = Poppins,
-                fontWeight = FontWeight.Normal,
-                fontSize = 20.sp,
-                textAlign = TextAlign.Center,
-
-                )
-        }
-        Spacer(modifier = Modifier.weight(1f))
+                .weight(1f)
+        )
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -168,3 +184,9 @@ fun DashboardScreen(
         }
     }
 }
+
+
+
+
+
+

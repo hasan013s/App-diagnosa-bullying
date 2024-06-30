@@ -1,5 +1,6 @@
 package com.haa.diagnosabullying.ui.screen.question
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -31,7 +32,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.haa.diagnosabullying.ui.theme.Poppins
-import java.net.URLEncoder
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -104,30 +104,38 @@ fun QuestionScreen(
                 }
                 Button(
                     onClick = {
-                        val questionSelectedStateValue = questionViewModel.questionSelectedState.value
-                        val getTrueSelectedQuestionSize = questionSelectedStateValue.values.filter { it }
+                        val questionSelectedStateValue =
+                            questionViewModel.questionSelectedState.value
+                        val getTrueSelectedQuestionSize =
+                            questionSelectedStateValue.values.filter { it }
                         if (
                             questionSelectedStateValue.isEmpty() || getTrueSelectedQuestionSize.isEmpty()
                         ) {
                             Toast.makeText(context, "Silahkan pilih gejala", Toast.LENGTH_SHORT)
                                 .show()
                         } else {
-                            val diagnosis = questionSelectedStateValue
+                            val diagnosisIdList = questionSelectedStateValue
                                 .keys
                                 .toList()
-                                .joinToString { ":" }
-                            val encodedDiagnosis = URLEncoder.encode(diagnosis, "UTF-8")
 
-                            navHostController.navigate("RESULT_SCREEN/$encodedDiagnosis") {
-                                //supaya tidak dobel klik
-                                launchSingleTop = true
+                            val diagnosis = questionViewModel.calculateDiagnosis(diagnosisIdList)
+                            diagnosis?.let { diagnosisModel ->
+                                Log.e("diagnosisModel", diagnosisModel.toString())
+                                questionViewModel.saveDiagnosis(
+                                    diagnosisEntity = diagnosisModel.mapToDiagnosisEntity()
+                                ) {
+                                    navHostController.navigate("RESULT_SCREEN/$it") {
+                                        //supaya tidak dobel klik
+                                        launchSingleTop = true
+                                    }
+                                }
                             }
                         }
                     },
                     colors = ButtonDefaults.textButtonColors()
                 ) {
                     Text(
-                        text = "Next >>",
+                        text = "Lihat Hasil >>",
                         fontSize = 20.sp,
                         color = White
                     )

@@ -9,14 +9,16 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.haa.diagnosabullying.ui.history.HistoryDiagnosisScreen
+import com.haa.diagnosabullying.ui.history.HistoryDiagnosisViewModel
 import com.haa.diagnosabullying.ui.screen.DashboardScreen
+import com.haa.diagnosabullying.ui.screen.LoginScreen
 import com.haa.diagnosabullying.ui.screen.question.QuestionScreen
 import com.haa.diagnosabullying.ui.screen.question.QuestionViewModel
 import com.haa.diagnosabullying.ui.screen.result.ResultScreen
 import com.haa.diagnosabullying.ui.screen.result.ResultViewModel
 import com.haa.diagnosabullying.ui.theme.DiagnosaBullyingTheme
 import dagger.hilt.android.AndroidEntryPoint
-import java.net.URLDecoder
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -28,12 +30,17 @@ class MainActivity : ComponentActivity() {
                 NavHost(
                     navController = navHostController,
                     route = "ROOT_SCREEN",
-                    startDestination = "DASHBOARD_SCREEN",
+                    startDestination = "LOGIN_SCREEN",
                 ) {
                     composable(
                         route = "DASHBOARD_SCREEN"
                     ) {
                         DashboardScreen(navHostController = navHostController)
+                    }
+                    composable(
+                        route = "LOGIN_SCREEN"
+                    ) {
+                        LoginScreen(navHostController = navHostController)
                     }
                     composable(
                         route = "QUESTION_SCREEN"
@@ -45,21 +52,28 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                     composable(
-                        route = "RESULT_SCREEN/{diagnosis}",
+                        route = "RESULT_SCREEN/{diagnosisId}",
                         arguments = listOf(
-                            navArgument("diagnosis") {
+                            navArgument("diagnosisId") {
                                 type = NavType.StringType
                             }
                         )
                     ) {
-                        val argument = it.arguments?.getString("diagnosis") ?: ""
-                        val decodedDiagnosis = URLDecoder.decode(argument, "UTF-8")
-                        val diagnosisList = decodedDiagnosis.split(":")
+                        val argument = (it.arguments?.getString("diagnosisId") ?: "0").toInt()
                         val resultViewModel = hiltViewModel<ResultViewModel>()
+                        resultViewModel.getDiagnosisById(argument)
                         ResultScreen(
                             navHostController = navHostController,
                             resultViewModel = resultViewModel,
-                            diagnosisList = diagnosisList
+                        )
+                    }
+                    composable(
+                        route = "HISTORY_DIAGNOSIS_SCREEN"
+                    ) {
+                        val historyDiagnosisViewModel = hiltViewModel<HistoryDiagnosisViewModel>()
+                        HistoryDiagnosisScreen(
+                            navHostController = navHostController,
+                            historyDiagnosisViewModel = historyDiagnosisViewModel
                         )
                     }
                 }

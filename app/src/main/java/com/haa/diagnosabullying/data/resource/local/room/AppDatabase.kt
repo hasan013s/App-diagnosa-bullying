@@ -4,19 +4,25 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.google.gson.Gson
 import com.haa.diagnosabullying.R
+import com.haa.diagnosabullying.data.resource.local.room.dao.DiagnosisDao
 import com.haa.diagnosabullying.data.resource.local.room.dao.QuestionDao
 import com.haa.diagnosabullying.data.resource.local.room.entity.QuestionEntity
+import com.haa.diagnosabullying.data.resource.local.room.entity.DiagnosisEntity
+import com.haa.diagnosabullying.helper.RoomConverter
 import com.haa.diagnosabullying.helper.readJsonFromRaw
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [QuestionEntity::class], version = 1)
+@Database(entities = [QuestionEntity::class, DiagnosisEntity::class], version = 1)
+@TypeConverters(RoomConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun questionDao(): QuestionDao
+    abstract fun diagnosisDao(): DiagnosisDao
 
     companion object {
         @Volatile
